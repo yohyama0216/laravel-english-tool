@@ -11,15 +11,34 @@ services:
     working_dir: /var/www
     volumes:
       - ../backend:/var/www
-      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
-    networks:
-      - laravel_network
     environment:
+      #- APP_KEY=base64:YourGeneratedAppKey
       - APP_ENV=local
       - APP_DEBUG=true
-      #- APP_KEY=base64:SomeBase64Key=
+      - DB_CONNECTION=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=your_database_name
+      - DB_USERNAME=your_database_user
+      - DB_PASSWORD=your_database_password
+    depends_on:
+      - mysql
     ports:
       - "9000:9000"
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: your_database_name
+      MYSQL_USER: your_database_user
+      MYSQL_PASSWORD: your_database_password
+      MYSQL_ROOT_PASSWORD: your_root_password
+    volumes:
+      - mysqldata:/var/lib/mysql
+    ports:
+      - "3306:3306"
 
   nginx:
     image: nginx:latest
@@ -30,11 +49,8 @@ services:
     volumes:
       - ../backend:/var/www
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-    networks:
-      - laravel_network
     depends_on:
       - app
 
-networks:
-  laravel_network:
-    driver: bridge
+volumes:
+  mysqldata:

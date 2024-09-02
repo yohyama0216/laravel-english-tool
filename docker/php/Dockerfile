@@ -1,7 +1,7 @@
-# ベースイメージとしてPHPを使用
+# ベースイメージとしてPHP 8.2を使用
 FROM php:8.2-fpm
 
-# 必要なパッケージをインストール
+# システムの更新と必要なパッケージのインストール
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
@@ -11,15 +11,25 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     git \
-    curl
+    curl \
+    libpq-dev \
+    libbz2-dev \
+    libzip-dev \
+    libicu-dev \
+    libsqlite3-dev \
+    libmcrypt-dev \
+    default-mysql-client
+
+# MySQLドライバのインストール
+RUN docker-php-ext-install pdo pdo_mysql
 
 # Composerのインストール
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# 作業ディレクトリを設定
+# 作業ディレクトリの設定
 WORKDIR /var/www
 
-# プロジェクトファイルをコピー
+# Laravelプロジェクトのファイルをコピー
 COPY backend /var/www
 
 # Composerの依存関係をインストール
