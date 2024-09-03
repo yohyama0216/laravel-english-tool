@@ -1,6 +1,14 @@
 # laravel-english-tool
 English Tool by Laravel
 
+# 画面
+- トップ画面
+- 和文一覧画面
+- 学習履歴画面
+- ユーザー一覧画面
+- 学習画面
+- ログイン画面 
+
 # フォルダ構成
 ```text
 project-root/
