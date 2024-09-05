@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\LearningHistory;
 use App\Models\Sentence;
+use App\Models\User;
 
 class LearningHistoryService
 {
@@ -14,10 +15,10 @@ class LearningHistoryService
      * @param Sentence $sentence
      * @return LearningHistory
      */
-    public function addLearningHistory(int $userId, Sentence $sentence): LearningHistory
+    public function addLearningHistory(User $user, Sentence $sentence): LearningHistory
     {
         return LearningHistory::create([
-            'user_id' => $userId,
+            'user_id' => $user->id,
             'subject' => 'Sentence Learning',
             'description' => $sentence->sentence,
             'learned_at' => now(),

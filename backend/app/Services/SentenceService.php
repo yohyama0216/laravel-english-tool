@@ -3,18 +3,14 @@
 namespace App\Services;
 
 use App\Models\Sentence;
+use App\Models\Setting;
 
 class SentenceService
 {
-    /**
-     * 入力が正しいかどうかを判定する
-     *
-     * @param string $input
-     * @param Sentence $sentence
-     * @return bool
-     */
-    public function isInputCorrect(string $input, Sentence $sentence): bool
+    public function getSentencesBySetting(Setting $setting): Sentence
     {
-        return $input === $sentence->sentence;
+        $limit = $setting->count;
+        //return Sentence::inRandomOrder()->limit($limit);
+        return Sentence::inRandomOrder()->first();
     }
 }
