@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+        // 他のシーダーも登録できます
+        $this->call(SentenceSeeder::class);
     }
 }
