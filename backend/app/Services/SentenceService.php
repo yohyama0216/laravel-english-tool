@@ -9,7 +9,7 @@ class SentenceService
 {
     public function getSentencesBySetting(Setting $setting): Sentence
     {
-        $limit = $setting->count;
+        //$limit = $setting->count;
         //return Sentence::inRandomOrder()->limit($limit);
         return Sentence::inRandomOrder()->first();
     }

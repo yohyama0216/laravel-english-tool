@@ -18,3 +18,5 @@ Route::resource('learning_histories', LearningHistoryController::class);
 // 学習
 Route::get('/learning', [LearningController::class, 'show'])->name('learning.show');
 Route::post('/learning', [LearningController::class, 'check'])->name('learning.check');
+
+Route::post('/learning/check', [LearningController::class, 'checkSentence'])->name('learning.check');
