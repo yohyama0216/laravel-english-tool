@@ -18,7 +18,7 @@ class LearningHistoryService
     public function addLearningHistory(User $user, Sentence $sentence): LearningHistory
     {
         return LearningHistory::create([
-            'user_id' => $user->id,
+            //'user_id' => $user->id,
             'subject' => 'Sentence Learning',
             'description' => $sentence->sentence,
             'learned_at' => now(),

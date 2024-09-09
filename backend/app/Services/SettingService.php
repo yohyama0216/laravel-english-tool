@@ -9,6 +9,6 @@ class SettingService
 {
     public function getSettingByUser(User $user): Setting
     {
-        return Setting::findByUser($user);
+        return new Setting();//Setting::findByUser($user);
     }
 }

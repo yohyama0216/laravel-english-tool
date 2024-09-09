@@ -10,6 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 class LearningSessionResult
 {
     private int $score;
-    private array $gradeResults;
+    private array $gradingResults;
     private DateTime $datetime;
 }

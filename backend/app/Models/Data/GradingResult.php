@@ -2,12 +2,9 @@
 
 namespace App\Models\Data;
 
-use DateTime;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Sentence;
 
-class GradeResult
+class GradingResult
 {
     private string $input;
     private Sentence $sentence;

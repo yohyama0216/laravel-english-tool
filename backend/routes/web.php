@@ -19,4 +19,3 @@ Route::resource('learning_histories', LearningHistoryController::class);
 Route::get('/learning', [LearningController::class, 'show'])->name('learning.show');
 Route::post('/learning', [LearningController::class, 'check'])->name('learning.check');
 
-Route::post('/learning/check', [LearningController::class, 'checkSentence'])->name('learning.check');
