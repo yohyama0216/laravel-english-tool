@@ -4,23 +4,27 @@ namespace App\Services;
 
 use App\Models\Data\GradingResult;
 use App\Models\Data\InputSentencePair;
-use App\Models\Data\LearningSessionResult;
-use App\Models\Sentence;
-use App\Models\Setting;
 
 class GradingService
 {
 
-    // 一問ずつ判定
     public function gradeInputSentencePair(InputSentencePair $inputSentencePair): GradingResult
+    {       
+        $percent = floor($inputSentencePair->getSimilarPercent());
+        $message = $this->getMessageByPercent($percent);
+        return new GradingResult($inputSentencePair,'score:'.$percent.' 「'.$message.'」');
+    }
+
+    private function getMessageByPercent(int $percent)
     {
-        // もっとスマートにしたい
-        //$input = $inputSentencePair->getInput();
-        //$sentence = $inputSentencePair->getSentence();
-        //$input_str_utf8 = mb_convert_encoding($input, 'UTF-8');
-        //$sentence_str_utf8 = mb_convert_encoding($sentence->sentence, 'UTF-8');
-        $percent = $inputSentencePair->getSimilarPercent();
-        // inputsentencepairを使えばいい？
-        return new GradingResult($inputSentencePair,$percent);
+        if ($percent > 90) {
+            return '正解';
+        } else if ($percent > 70) {
+            return 'だいたいOK';
+        } else if ($percent > 50) {
+            return '少しOK';
+        } else {
+            return 'まだまだ';
+        }
     }
 }

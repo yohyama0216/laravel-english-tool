@@ -32,6 +32,7 @@ class InputSentencePair
 
     public function getSimilarPercent()
     {
-        return similar_text($this->input,$this->sentence->sentence);
+        similar_text($this->input,$this->sentence->sentence,$percent);
+        return $percent;
     }
 }
