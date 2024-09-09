@@ -31,7 +31,7 @@ class LearningController extends Controller
 
     public function show()
     {
-        $setting = $this->settingService->getSettingByUser(Auth::user());
+        $setting = new Setting();//$this->settingService->getSettingByUser(Auth::user());
         $sentence = $this->sentenceService->getSentencesBySetting($setting);
         return view('learning.show', compact('sentence'));
     }

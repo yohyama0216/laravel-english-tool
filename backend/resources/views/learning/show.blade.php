@@ -52,7 +52,7 @@
                             user_input: this.userInput
                         })
                     };
-                    const response = await fetch('/learning/check', postdata);
+                    const response = await fetch('/grading/check', postdata);
                     console.log(postdata)
                     const data = await response.json();
                     this.message = data.message;

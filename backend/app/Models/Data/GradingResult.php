@@ -21,4 +21,9 @@ class GradingResult
     {
         return $this->result;
     }
+
+    public function getSentence()
+    {
+        return $this->sentence;
+    }
 }

@@ -24,4 +24,14 @@ class InputSentencePair
     {
         return $this->sentence;
     }
+
+    public function isSame()
+    {
+        return ($this->input === $this->sentence->sentence);
+    }
+
+    public function getSimilarPercent()
+    {
+        return similar_text($this->input,$this->sentence->sentence);
+    }
 }

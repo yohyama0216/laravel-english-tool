@@ -19,7 +19,8 @@ class GradingService
         $sentence = $inputSentencePair->getSentence();
         $input_str_utf8 = mb_convert_encoding($input, 'UTF-8');
         $sentence_str_utf8 = mb_convert_encoding($sentence->sentence, 'UTF-8');
-        similar_text($input_str_utf8,$sentence_str_utf8,$percent);
+        $percent = $inputSentencePair->getSimilarPercent();
+        // inputsentencepairを使えばいい？
         return new GradingResult($input,$sentence,$percent);
     }
 }

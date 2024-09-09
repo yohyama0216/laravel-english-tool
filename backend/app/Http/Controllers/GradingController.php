@@ -44,13 +44,10 @@ class GradingController extends Controller
         // 入力の判定処理をサービスクラスに委譲
         $gradingResult = $this->gradingService->gradeInputSentencePair($inputSentencePair);
         // 学習履歴の追加処理をサービスクラスに委譲
-        $this->learningHistoryService->addLearningHistory(Auth::user(), $gradingResult);
-        
-        if ($gradingResult->getResult()) {
-            return response()->json(['success' => true, 'message' => 'Collect']);
-        } else {
-            return response()->json(['success' => false, 'message' => 'Incorrect, try again.']);
-        }
+        //$this->learningHistoryService->addLearningHistory(Auth::user(), $gradingResult);
+        $message = 'aaa';
+        // successはresultによって切り替える
+        return response()->json(['success' => true, 'result' => '','message' => $message]);
 
     }
 }
