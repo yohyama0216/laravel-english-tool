@@ -16,13 +16,13 @@ class LearningHistoryService
      * @param Sentence $sentence
      * @return LearningHistory
      */
-    public function addLearningHistory(User $user, GradingResult $gradingResult): LearningHistory
+    public function addLearningHistory(User $user, GradingResult $gradingResult)
     {
-        return LearningHistory::create([
-            //'user_id' => $user->id,
-            'subject' => 'Sentence Learning',
-            'description' => $gradingResult->getSentence()->sentence,
-            'learned_at' => now(),
-        ]);
+        // return LearningHistory::create([
+        //     //'user_id' => $user->id,
+        //     'subject' => 'Sentence Learning',
+        //     'description' => $gradingResult->getInputSentencePair()->getSentence()->sentence,
+        //     'learned_at' => now(),
+        // ]);
     }
 }

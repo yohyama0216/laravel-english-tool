@@ -6,14 +6,12 @@ use App\Models\Sentence;
 
 class GradingResult
 {
-    private string $input;
-    private Sentence $sentence;
-    private bool $result;
+    private InputSentencePair $inputSentencePair;
+    private string $result;
 
-    public function __construct(string $input, Sentence $sentence, bool $result)
+    public function __construct(InputSentencePair $inputSentencePair, string $result)
     {
-        $this->input = $input;
-        $this->sentence = $sentence;
+        $this->inputSentencePair = $inputSentencePair;
         $this->result = $result;
     }
 
@@ -22,8 +20,8 @@ class GradingResult
         return $this->result;
     }
 
-    public function getSentence()
+    public function getInputSentencePair()
     {
-        return $this->sentence;
+        return $this->inputSentencePair;
     }
 }

@@ -15,12 +15,12 @@ class GradingService
     public function gradeInputSentencePair(InputSentencePair $inputSentencePair): GradingResult
     {
         // もっとスマートにしたい
-        $input = $inputSentencePair->getInput();
-        $sentence = $inputSentencePair->getSentence();
-        $input_str_utf8 = mb_convert_encoding($input, 'UTF-8');
-        $sentence_str_utf8 = mb_convert_encoding($sentence->sentence, 'UTF-8');
+        //$input = $inputSentencePair->getInput();
+        //$sentence = $inputSentencePair->getSentence();
+        //$input_str_utf8 = mb_convert_encoding($input, 'UTF-8');
+        //$sentence_str_utf8 = mb_convert_encoding($sentence->sentence, 'UTF-8');
         $percent = $inputSentencePair->getSimilarPercent();
         // inputsentencepairを使えばいい？
-        return new GradingResult($input,$sentence,$percent);
+        return new GradingResult($inputSentencePair,$percent);
     }
 }
