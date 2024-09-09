@@ -38,9 +38,7 @@ class GradingController extends Controller
         // requestオブジェクトのラッパー作れる？
         $input = $request->input('user_input');
         $sentenceId = $request->input('sentence_id');
-
-        // service経由にする？
-        $sentence = Sentence::findOrFail($sentenceId);
+        $sentence = $this->sentenceService->findBySentenceId($sentenceId);
 
         $inputSentencePair = new InputSentencePair($input,$sentence);
         // 入力の判定処理をサービスクラスに委譲
